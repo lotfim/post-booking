@@ -34,7 +34,29 @@ class PbBooking {
 		return $content;
 	}
 
-	public function register_booking() {
+	public function register_booking($content) {
+		global $post;
+		$stripePrivateKey = get_option($this->plugin_name)[PbGeneralSettings::STRIPE_PRIVATE_KEY];
+		$price            = get_post_meta($post->ID, PbSettings::PRICE_SETTING_META_KEY)[0];
+		$currency         = get_option($this->plugin_name)[PbGeneralSettings::CURRENCY];
+		$fullName         = sanitize_text_field($_POST['full-name']);
+		$validSettigs     = ($stripePrivateKey && '' !== $stripePrivateKey) && ($currency && '' !== $currency) && ($price && '' !== $price && 0.0 < $price);
+		if (isset($_POST['stripeToken']) && $validSettigs) {
+			$stripeToken = sanitize_text_field($_POST['stripeToken']);
+			$stripe_api  = new StripeApi($stripeToken, $stripePrivateKey, $price, $currency, 'desc', 'test@yopmail.com');
+			$payment     = $stripe_api->charge_customer();
+			if ($payment) {
+				//TODO Registering the order
+				add_post_meta($post->ID, 'order', ['used' => false, 'name' => $fullName], false);
+
+				$content .= '<p>Votre commande a été prise en compte </p>';
+			}
+		}
+
+		return $content;
+	}
+
+	private function register_payment() {
 		global $post;
 		$stripePrivateKey = get_option($this->plugin_name)[PbGeneralSettings::STRIPE_PRIVATE_KEY];
 		$price            = get_post_meta($post->ID, PbSettings::PRICE_SETTING_META_KEY)[0];
@@ -43,7 +65,10 @@ class PbBooking {
 		if (isset($_POST['stripeToken']) && $validSettigs) {
 			$stripeToken = sanitize_text_field($_POST['stripeToken']);
 			$stripe_api  = new StripeApi($stripeToken, $stripePrivateKey, $price, $currency, 'desc', 'test@yopmail.com');
-			$stripe_api->charge_customer();
+
+			return $stripe_api->charge_customer();
 		}
+
+		return false;
 	}
 }

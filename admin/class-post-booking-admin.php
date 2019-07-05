@@ -22,6 +22,8 @@
  */
 require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-settings.php';
 require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-general-settings.php';
+require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-Orders.php';
+
 
 class Post_Booking_Admin {
 
@@ -54,6 +56,8 @@ class Post_Booking_Admin {
 	protected $settings;
 
 	protected $general_settings;
+
+	protected $orders;
 
 	/**
 	 * @return mixed
@@ -128,4 +132,15 @@ class Post_Booking_Admin {
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/post-booking-admin.js', array('jquery'), $this->version, false);
 	}
 
+	public function orders_page() {
+		add_menu_page(__('Orders', $this->plugin_name), __('Orders', $this->plugin_name), 'manage_options', 'display_orders', array($this, 'display_orders'));
+	}
+
+	public function display_orders() {
+		echo '<div class="wrap"><h2>' . __('Orders', $this->plugin_name) . '</h2>';
+		$this->orders = new PbOrders(array(), $this->plugin_name);
+		$this->orders->prepare_items();
+		$this->orders->display();
+		echo '</div>';
+	}
 }

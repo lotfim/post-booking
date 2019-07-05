@@ -22,7 +22,7 @@ class PbGeneralSettings {
 
 
 	public function create_settings_page() {
-		add_options_page('Settings', 'Your Settings', 'manage_options', 'pb_settings', array($this, 'display_settings'));
+		add_options_page('Settings', __('Booking Settings', $this->plugin_name), 'manage_options', 'pb_settings', array($this, 'display_settings'));
 	}
 
 	public function save_settings() {

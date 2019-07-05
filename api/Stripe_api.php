@@ -30,8 +30,10 @@ class StripeApi {
 	public function charge_customer() {
 		$customer = $this->create_customer();
 		if ($customer) {
-			$this->charge();
+			return $this->charge();
 		}
+
+		return false;
 	}
 
 	protected function create_customer() {

@@ -51,7 +51,18 @@ function displayBookingSpace() {
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-12">';
     bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
-    bookingSpaceHtml += '                        <label for="cardNumber">Numéro de carte</label>';
+    bookingSpaceHtml += '                        <label for="full-name">Nom</label>';
+    bookingSpaceHtml += '                        <div class="input-group">';
+    bookingSpaceHtml += '                            <input type="text" id="full-name" class="form-control card-number"  name="full-name" placeholder="Nom" required/>';
+    bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
+    bookingSpaceHtml += '                        </div>';
+    bookingSpaceHtml += '                    </div>      ';
+    bookingSpaceHtml += '                </div>';
+    bookingSpaceHtml += '            </div>';
+    bookingSpaceHtml += '            <div class="row">';
+    bookingSpaceHtml += '                <div class="col-xs-12">';
+    bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
+    bookingSpaceHtml += '                        <label for="card-number">Numéro de carte</label>';
     bookingSpaceHtml += '                        <div class="input-group">';
     bookingSpaceHtml += '                            <input type="tel" id="card-number" class="form-control card-number"  name="cardNumber" placeholder="Numéro de carte" required/>';
     bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
@@ -62,7 +73,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-3 col-md-2">';
     bookingSpaceHtml += '                    <div class="form-group">';
-    bookingSpaceHtml += '                 <label for="" style="position:relative;left:40px;">Date</label>';
+    bookingSpaceHtml += '                 <label for="card-expiry-month" style="position:relative;left:40px;">Date</label>';
     bookingSpaceHtml += '                        <input type="tel" id="card-expiry-month"  class="form-control card-expiry-month " maxlength="2" size="2"  placeholder="MM" autocomplete="cc-exp" required />';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
@@ -74,7 +85,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '                </div>';
     bookingSpaceHtml += '                <div class="col-xs-4 col-md-4 pull-right">';
     bookingSpaceHtml += '                    <div class="form-group">';
-    bookingSpaceHtml += '                 <label for="cardCVC" >CODE CVC</label>';
+    bookingSpaceHtml += '                 <label for="card-cvc" >CODE CVC</label>';
     bookingSpaceHtml += '                        <input  type="tel"  id="card-cvc" class="form-control card-cvc" maxlength="3" size="3"  placeholder="CVC" required/>';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
