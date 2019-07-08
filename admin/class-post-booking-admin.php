@@ -22,7 +22,8 @@
  */
 require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-settings.php';
 require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-general-settings.php';
-require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-Orders.php';
+require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-bookings.php';
+require_once plugin_dir_path(__FILE__) . DIRECTORY_SEPARATOR . 'Pb-delivered-bookings.php';
 
 
 class Post_Booking_Admin {
@@ -57,7 +58,9 @@ class Post_Booking_Admin {
 
 	protected $general_settings;
 
-	protected $orders;
+	protected $bookings;
+
+	protected $delivered_bookings;
 
 	/**
 	 * @return mixed
@@ -132,15 +135,27 @@ class Post_Booking_Admin {
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/post-booking-admin.js', array('jquery'), $this->version, false);
 	}
 
-	public function orders_page() {
-		add_menu_page(__('Orders', $this->plugin_name), __('Orders', $this->plugin_name), 'manage_options', 'display_orders', array($this, 'display_orders'));
+	public function bookings_page() {
+		add_menu_page(__('Bookings', $this->plugin_name), __('Bookings', $this->plugin_name), 'manage_options', 'display_bookings', array($this, 'display_bookings'));
 	}
 
-	public function display_orders() {
-		echo '<div class="wrap"><h2>' . __('Orders', $this->plugin_name) . '</h2>';
-		$this->orders = new PbOrders(array(), $this->plugin_name);
-		$this->orders->prepare_items();
-		$this->orders->display();
+	public function delivered_bookings_page() {
+		add_menu_page(__('Delivered bookings', $this->plugin_name), __('Delivered bookings', $this->plugin_name), 'manage_options', 'display_delivered_bookings', array($this, 'display_delivered_bookings'));
+	}
+
+	public function display_bookings() {
+		echo '<div class="wrap"><h2>' . __('Bookings', $this->plugin_name) . '</h2>';
+		$this->bookings = new PbBookings(array(), $this->plugin_name);
+		$this->bookings->prepare_items();
+		$this->bookings->display();
+		echo '</div>';
+	}
+
+	public function display_delivered_bookings() {
+		echo '<div class="wrap"><h2>' . __('Delivered bookings', $this->plugin_name) . '</h2>';
+		$this->bookings = new PbDeliveredBookings(array(), $this->plugin_name);
+		$this->bookings->prepare_items();
+		$this->bookings->display();
 		echo '</div>';
 	}
 }

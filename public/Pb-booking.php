@@ -76,7 +76,7 @@ class PbBooking {
 			$payment     = $stripe_api->charge_customer();
 			if ($payment) {
 				//TODO Registering the order
-				add_post_meta($post->ID, 'order', ['used' => false, 'name' => $fullName], false);
+				add_post_meta($post->ID, 'order', ['used' => false, 'name' => $fullName, 'order_date' => time()], false);
 
 				$content .= '<p style="color:lawngreen;">' . esc_html($paymentSuccessMessage) . '</p>';
 			}

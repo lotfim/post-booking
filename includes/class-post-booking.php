@@ -151,7 +151,8 @@ class Post_Booking {
 
 		$plugin_admin = new Post_Booking_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action('admin_menu', $plugin_admin, 'orders_page');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'bookings_page');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'delivered_bookings_page');
 		$this->loader->add_action('admin_init', $plugin_admin->getGeneralSettings(), 'save_settings');
 		$this->loader->add_action('admin_menu', $plugin_admin->getGeneralSettings(), 'create_settings_page');
 		$this->loader->add_action('add_meta_boxes', $plugin_admin->getSettings(), 'add_settings_box');
