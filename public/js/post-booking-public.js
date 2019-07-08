@@ -33,9 +33,15 @@
 
 function displayBookingSpace() {
     var bookingSpace = document.getElementById('booking-space');
+    var fullNameLabel = document.getElementById('pb_full_name_label').value;
+    var cardNumberLabel = document.getElementById('pb_card_number_label').value;
+    var expiryDateLabel = document.getElementById('pb_expiry_date_label').value;
+    var cvcCodeLabel = document.getElementById('pb_cvc_code_label').value;
+    var paymentButtonText = document.getElementById('pb_payment_button_text').value;
+    var paymentFailureMessage = document.getElementById('pb_payment_failure_message').value;
     bookingSpaceHtml = '';
     bookingSpaceHtml = '<form id="payment_form" method="post"> ';
-    bookingSpaceHtml += '<div class="payment-errors" style="color:red;"> </div>';
+    bookingSpaceHtml += '<div id="pb_payment_errors" class="payment-errors" style="color:red;"> </div>';
     bookingSpaceHtml += '<div class="form-group" id="insription_connexion">';
     bookingSpaceHtml += '</div>';
     bookingSpaceHtml += '<div class="panel panel-default credit-card-box">';
@@ -51,7 +57,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-12">';
     bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
-    bookingSpaceHtml += '                        <label for="full-name">Nom</label>';
+    bookingSpaceHtml += '                        <label for="full-name">' + fullNameLabel + '</label>';
     bookingSpaceHtml += '                        <div class="input-group">';
     bookingSpaceHtml += '                            <input type="text" id="full-name" class="form-control card-number"  name="full-name" placeholder="Nom" required/>';
     bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
@@ -62,7 +68,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-12">';
     bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
-    bookingSpaceHtml += '                        <label for="card-number">Numéro de carte</label>';
+    bookingSpaceHtml += '                        <label for="card-number">' + cardNumberLabel + '</label>';
     bookingSpaceHtml += '                        <div class="input-group">';
     bookingSpaceHtml += '                            <input type="tel" id="card-number" class="form-control card-number"  name="cardNumber" placeholder="Numéro de carte" required/>';
     bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
@@ -73,7 +79,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-3 col-md-2">';
     bookingSpaceHtml += '                    <div class="form-group">';
-    bookingSpaceHtml += '                 <label for="card-expiry-month" style="position:relative;left:40px;">Date</label>';
+    bookingSpaceHtml += '                 <label for="card-expiry-month" style="position:relative;left:40px;">' + expiryDateLabel + '</label>';
     bookingSpaceHtml += '                        <input type="tel" id="card-expiry-month"  class="form-control card-expiry-month " maxlength="2" size="2"  placeholder="MM" autocomplete="cc-exp" required />';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
@@ -85,14 +91,14 @@ function displayBookingSpace() {
     bookingSpaceHtml += '                </div>';
     bookingSpaceHtml += '                <div class="col-xs-4 col-md-4 pull-right">';
     bookingSpaceHtml += '                    <div class="form-group">';
-    bookingSpaceHtml += '                 <label for="card-cvc" >CODE CVC</label>';
+    bookingSpaceHtml += '                 <label for="card-cvc" >' + cvcCodeLabel + '</label>';
     bookingSpaceHtml += '                        <input  type="tel"  id="card-cvc" class="form-control card-cvc" maxlength="3" size="3"  placeholder="CVC" required/>';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
     bookingSpaceHtml += '            </div>';
     bookingSpaceHtml += '            <div class="row">';
     bookingSpaceHtml += '                <div class="col-xs-12">';
-    bookingSpaceHtml += '                   <button id="send_payment" class="subscribe btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>';
+    bookingSpaceHtml += '                   <button id="send_payment" class="subscribe btn btn-success btn-lg btn-block" type="submit">' + paymentButtonText + '</button>';
     bookingSpaceHtml += '                </div>';
 
     bookingSpaceHtml += '            </div>';
@@ -115,11 +121,6 @@ function displayBookingSpace() {
             var card_cvc = document.getElementById('card-cvc').value;
             var card_exp_month = document.getElementById('card-expiry-month').value;
             var card_exp_year = document.getElementById('card-expiry-year').value;
-            console.log(stripe_public_key);
-            console.log(card_number);
-            console.log(card_cvc);
-            console.log(card_exp_month);
-            console.log(card_exp_year);
             e.preventDefault();
             document.getElementById('send_payment').setAttribute('disabled', true);
             Stripe.card.createToken({
@@ -127,8 +128,10 @@ function displayBookingSpace() {
             }, function(status, response) {
                 console.log(response);
                 if (response.error) { // Ah une erreur !
-                    //form.getElementsByClassName('.payment-errors')[0]).inner ('Informations de carte erronées');
-                    //form.getElementsByTagName('button')[0].prop('disabled', false); // On réactive le bouton
+                    var err = document.getElementById('pb_payment_errors');
+                    console.log(err);
+                    document.getElementById('pb_payment_errors').innerText = paymentFailureMessage;
+                    document.getElementById('send_payment').setAttribute('disabled', false); // On réactive le bouton
                 } else { // Le token a bien été créé
                     var token = response.id; // On récupère le token
                     var tokenElement = document.createElement('input');

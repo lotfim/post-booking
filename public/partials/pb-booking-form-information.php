@@ -7,6 +7,14 @@
  */
 ?>
 
+<input type="hidden" id="pb_payment_failure_message" name="pb_payment_failure_message" value="<?php _e(esc_attr($paymentFailureMessage)); ?>"/>
+<input type="hidden" id="pb_payment_button_text" name="pb_payment_button_text" value="<?php _e(esc_attr($paymentButtonText)); ?>"/>
+<input type="hidden" id="pb_cvc_code_label" name="pb_cvc_code_label" value="<?php _e(esc_attr($cvcCodeLabel)); ?>"/>
+
+<input type="hidden" id="pb_expiry_date_label" name="pb_expiry_date_label" value="<?php _e(esc_attr($expiryDateLabel)); ?>"/>
+
+<input type="hidden" id="pb_full_name_label" name="pb_full_name_label" value="<?php _e(esc_attr($fullNameLabel)); ?>"/>
+<input type="hidden" id="pb_card_number_label" name="pb_card_number_label" value="<?php _e(esc_attr($cardNumberLabel)); ?>"/>
 <input type="hidden" id="pb_stripe_public_key" name="pb_stripe_public_key" value="<?php _e(esc_attr($stripePublicKey)); ?>"/>
 <input type="hidden" id="pb_price" name="pb_price" value="<?php _e(esc_attr($price)); ?>"/>
 <input type="hidden" id="pb_form_submit_url" name="pb_form_submit_url" value="<?php _e(esc_attr(get_permalink($post->ID))); ?>"/>
