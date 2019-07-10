@@ -39,6 +39,8 @@ function displayBookingSpace() {
     var cvcCodeLabel = document.getElementById('pb_cvc_code_label').value;
     var paymentButtonText = document.getElementById('pb_payment_button_text').value;
     var paymentFailureMessage = document.getElementById('pb_payment_failure_message').value;
+    var expiryMonthPlaceholder = document.getElementById('pb_month_placeholder').value;
+    var expiryYearPlaceholder = document.getElementById('pb_year_placeholder').value;
     bookingSpaceHtml = '';
     bookingSpaceHtml = '<form id="payment_form" method="post"> ';
     bookingSpaceHtml += '<div id="pb_payment_errors" class="payment-errors" style="color:red;"> </div>';
@@ -59,7 +61,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
     bookingSpaceHtml += '                        <label for="full-name">' + fullNameLabel + '</label>';
     bookingSpaceHtml += '                        <div class="input-group">';
-    bookingSpaceHtml += '                            <input type="text" id="full-name" class="form-control card-number"  name="full-name" placeholder="Nom" required/>';
+    bookingSpaceHtml += '                            <input type="text" id="full-name" class="form-control card-number"  name="full-name" placeholder="" required/>';
     bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
     bookingSpaceHtml += '                        </div>';
     bookingSpaceHtml += '                    </div>      ';
@@ -70,7 +72,7 @@ function displayBookingSpace() {
     bookingSpaceHtml += '                    <div class="form-group" style="max-width:523px;">';
     bookingSpaceHtml += '                        <label for="card-number">' + cardNumberLabel + '</label>';
     bookingSpaceHtml += '                        <div class="input-group">';
-    bookingSpaceHtml += '                            <input type="tel" id="card-number" class="form-control card-number"  name="cardNumber" placeholder="Numéro de carte" required/>';
+    bookingSpaceHtml += '                            <input type="tel" id="card-number" class="form-control card-number"  name="cardNumber" placeholder="" required/>';
     bookingSpaceHtml += '                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>';
     bookingSpaceHtml += '                        </div>';
     bookingSpaceHtml += '                    </div>      ';
@@ -80,13 +82,13 @@ function displayBookingSpace() {
     bookingSpaceHtml += '                <div class="col-xs-3 col-md-2">';
     bookingSpaceHtml += '                    <div class="form-group">';
     bookingSpaceHtml += '                 <label for="card-expiry-month" style="position:relative;left:40px;">' + expiryDateLabel + '</label>';
-    bookingSpaceHtml += '                        <input type="tel" id="card-expiry-month"  class="form-control card-expiry-month " maxlength="2" size="2"  placeholder="MM" autocomplete="cc-exp" required />';
+    bookingSpaceHtml += '                        <input type="tel" id="card-expiry-month"  class="form-control card-expiry-month " maxlength="2" size="2"  placeholder="' + expiryMonthPlaceholder + '" autocomplete="cc-exp" required />';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
     bookingSpaceHtml += '                <div class="col-xs-4 col-md-4">';
     bookingSpaceHtml += '                    <div class="form-group">';
     bookingSpaceHtml += '                 <label style="position:relative;right:40px;">d\'expiration</label>';
-    bookingSpaceHtml += '                        <input type="tel" id="card-expiry-year"  class="form-control card-expiry-year" maxlength="4" size="4"  placeholder="AAAA" autocomplete="cc-exp" required />';
+    bookingSpaceHtml += '                        <input type="tel" id="card-expiry-year"  class="form-control card-expiry-year" maxlength="4" size="4"  placeholder="' + expiryYearPlaceholder + '" autocomplete="cc-exp" required />';
     bookingSpaceHtml += '                    </div>';
     bookingSpaceHtml += '                </div>';
     bookingSpaceHtml += '                <div class="col-xs-4 col-md-4 pull-right">';

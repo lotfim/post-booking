@@ -19,6 +19,7 @@ class PbGeneralSettings {
 	CONST CARD_NUMBER_LABEL = 'card_number_label';
 	CONST EXPIRY_DATE_LABEL = 'expiry_date_label';
 	CONST CVC_CODE_LABEL = 'cvc_code_label';
+	CONST BOOKING_BUTTON_TEXT = 'booking_button_text';
 	CONST PAYMENT_BUTTON_TEXT = 'payment_button_text';
 	CONST SUCCESSFUL_PAYMENT_MESSAGE = 'successful_payment_message';
 	CONST PAYMENT_FAILURE_MESSAGE = 'payment_failure_message';
@@ -50,7 +51,8 @@ class PbGeneralSettings {
 		$valid[self::CARD_NUMBER_LABEL]          = sanitize_text_field($input[self::CARD_NUMBER_LABEL]);
 		$valid[self::EXPIRY_DATE_LABEL]          = sanitize_text_field($input[self::EXPIRY_DATE_LABEL]);
 		$valid[self::CVC_CODE_LABEL]             = sanitize_text_field($input[self::CVC_CODE_LABEL]);
-		$valid[self::PAYMENT_BUTTON_TEXT]    = sanitize_text_field($input[self::PAYMENT_BUTTON_TEXT]);
+		$valid[self::BOOKING_BUTTON_TEXT]        = sanitize_text_field($input[self::BOOKING_BUTTON_TEXT]);
+		$valid[self::PAYMENT_BUTTON_TEXT]        = sanitize_text_field($input[self::PAYMENT_BUTTON_TEXT]);
 		$valid[self::SUCCESSFUL_PAYMENT_MESSAGE] = sanitize_text_field($input[self::SUCCESSFUL_PAYMENT_MESSAGE]);
 		$valid[self::PAYMENT_FAILURE_MESSAGE]    = sanitize_text_field($input[self::PAYMENT_FAILURE_MESSAGE]);
 

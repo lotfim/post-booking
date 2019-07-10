@@ -97,3 +97,8 @@ msgstr "Echec du paiement"
 msgid "Successful payment"
 msgstr "Paiement réussi"
 
+msgid "Deliver service"
+msgstr "Livrer la prestation"
+
+msgid "YYYY"
+msgstr "AAAA"

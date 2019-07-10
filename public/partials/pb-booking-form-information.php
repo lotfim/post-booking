@@ -18,3 +18,6 @@
 <input type="hidden" id="pb_stripe_public_key" name="pb_stripe_public_key" value="<?php _e(esc_attr($stripePublicKey)); ?>"/>
 <input type="hidden" id="pb_price" name="pb_price" value="<?php _e(esc_attr($price)); ?>"/>
 <input type="hidden" id="pb_form_submit_url" name="pb_form_submit_url" value="<?php _e(esc_attr(get_permalink($post->ID))); ?>"/>
+
+<input type="hidden" id="pb_month_placeholder" name="pb_month_placeholder" value="<?php _e('MM',$this->plugin_name); ?>"/>
+<input type="hidden" id="pb_year_placeholder" name="pb_year_placeholder" value="<?php _e('YYYY',$this->plugin_name); ?>"/>

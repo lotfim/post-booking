@@ -49,11 +49,15 @@ class PbBooking {
 		if (!$paymentFailureMessage || '' === trim($paymentFailureMessage)) {
 			$paymentFailureMessage = __('Payment failure', $paymentFailureMessage);
 		}
+		$bookingButtonText = get_option($this->plugin_name)[PbGeneralSettings::BOOKING_BUTTON_TEXT];
+		if (!$bookingButtonText || '' === trim($bookingButtonText)) {
+			$bookingButtonText = __('Book', $this->plugin_name);
+		}
 
 
 		if (is_single() && $validSettigs) {
 			include_once('partials' . DIRECTORY_SEPARATOR . 'pb-booking-form-information.php');
-			$content .= '<button onclick="displayBookingSpace();">' . __('Book', $this->plugin_name) . '</button> <div id="booking-space"></div>';
+			$content .= '<button onclick="displayBookingSpace();">' . $bookingButtonText . '</button> <div id="booking-space"></div>';
 		}
 
 		return $content;
