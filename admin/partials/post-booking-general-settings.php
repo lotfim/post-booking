@@ -91,7 +91,7 @@
 			<br>
 
 			<fieldset>
-				<label for="<?php echo esc_attr($this->plugin_name . '-' . self::PAYMENT_BUTTON_TEXT); ?>"><?php echo _e('Payment button', $this->plugin_name); ?>: &nbsp;</label>
+				<label for="<?php echo esc_attr($this->plugin_name . '-' . self::PAYMENT_BUTTON_TEXT); ?>"><?php echo _e('Payment button text', $this->plugin_name); ?>: &nbsp;</label>
 				<input type="text" id="<?php echo esc_attr($this->plugin_name . '-' . self::PAYMENT_BUTTON_TEXT); ?>" size="90" name="<?php echo esc_attr($this->plugin_name . '[' . self::PAYMENT_BUTTON_TEXT . ']'); ?>" value="<?php echo esc_attr($settings[self::PAYMENT_BUTTON_TEXT]); ?>"/>
 			</fieldset>
 			<br>

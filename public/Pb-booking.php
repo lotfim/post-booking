@@ -68,7 +68,7 @@ class PbBooking {
 		$validSettigs          = ($stripePrivateKey && '' !== $stripePrivateKey) && ($currency && '' !== $currency) && ($price && '' !== $price && 0.0 < $price);
 		$paymentSuccessMessage = get_option($this->plugin_name)[PbGeneralSettings::SUCCESSFUL_PAYMENT_MESSAGE];
 		if (!$paymentSuccessMessage || '' === trim($paymentSuccessMessage)) {
-			$paymentSuccessMessage = __('Payment failure', $paymentSuccessMessage);
+			$paymentSuccessMessage = __('Successful payment', $paymentSuccessMessage);
 		}
 		if (isset($_POST['stripeToken']) && $validSettigs) {
 			$stripeToken = sanitize_text_field($_POST['stripeToken']);

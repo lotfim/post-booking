@@ -1,0 +1,99 @@
+msgid "Bookings"
+msgstr "Réservations"
+
+msgid "Delivered bookings"
+msgstr "Réservations passées"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Settings"
+msgstr "Réglages"
+
+msgid "Booking settings"
+msgstr "Réglages réservations"
+
+msgid "Stripe settings"
+msgstr "Réglages Stripe"
+
+msgid "Stripe public API key"
+msgstr "Clé publique de l'API Stripe"
+
+msgid "Stripe private API key"
+msgstr "Clé privée de l'API Stripe"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "Payment form settings"
+msgstr "Réglages formulaire de paiement"
+
+msgid "Full name label"
+msgstr "Champ nom "
+
+msgid "Card number label"
+msgstr "Champ numéro de carte"
+
+msgid "Card expiry date label"
+msgstr "Champ date d'expiration carte"
+
+msgid "CVC code label"
+msgstr "Champ code CVC"
+
+msgid "Successful payment message"
+msgstr "Message à afficher en cas de paiement réussi"
+
+msgid "Payment failure message"
+msgstr "Message à afficher en cas d'échec du paiement"
+
+msgid "Payment failure message"
+msgstr "Message à afficher en cas d'échec du paiement"
+
+msgid "Payment button text"
+msgstr "Texte bouton de paiement"
+
+msgid "Booking button text"
+msgstr "Texte bouton de réservation"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Session"
+msgstr "Séance"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+msgid "Delivery date"
+msgstr "Date de la prestation"
+
+msgid "Book"
+msgstr "Réservez"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "Card number"
+msgstr "Numéro de carte"
+
+msgid "Expiry date"
+msgstr "Date d'expiration"
+
+msgid "Book now"
+msgstr "Réservez maintenant"
+
+msgid "Payment failure"
+msgstr "Echec du paiement"
+
+msgid "Successful payment"
+msgstr "Paiement réussi"
+
