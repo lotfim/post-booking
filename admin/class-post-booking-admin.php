@@ -136,11 +136,11 @@ class Post_Booking_Admin {
 	}
 
 	public function bookings_page() {
-		add_menu_page(__('Bookings', $this->plugin_name), __('Bookings', $this->plugin_name), 'manage_options', 'display_bookings', array($this, 'display_bookings'));
+		add_menu_page(__('Bookings', $this->plugin_name), __('Bookings', $this->plugin_name), 'edit_posts', 'display_bookings', array($this, 'display_bookings'));
 	}
 
 	public function delivered_bookings_page() {
-		add_menu_page(__('Delivered bookings', $this->plugin_name), __('Delivered bookings', $this->plugin_name), 'manage_options', 'display_delivered_bookings', array($this, 'display_delivered_bookings'));
+		add_menu_page(__('Delivered bookings', $this->plugin_name), __('Delivered bookings', $this->plugin_name), 'edit_posts', 'display_delivered_bookings', array($this, 'display_delivered_bookings'));
 	}
 
 	public function display_bookings() {
